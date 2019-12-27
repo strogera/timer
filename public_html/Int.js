@@ -1,13 +1,13 @@
-var timerUserTime = '';
-var TimerInterval;
+var IntUserTime = '';
+var IntInterval;
 
-function TimerStart() {
+function IntStart() {
 
-    var buttonName = document.getElementById('TimerStartButton');
+    var buttonName = document.getElementById('IntStartButton');
     if (buttonName.value === 'Start') {
         //    userTimeStore();
 
-        var timeInput = document.getElementById('TimerTime');
+        var timeInput = document.getElementById('IntTime');
         var timerTime = formatTimeStringToSeconds(timeInput.value);
         if (timerTime === -1) {
             // alert('Wrong input');
@@ -20,7 +20,7 @@ function TimerStart() {
 
         var startTime = Date.now();
         var reminderTime = timerTime * 0.05; //remind at this time, 5% of the whole timeba
-        TimerInterval = setInterval(function () {
+        IntInterval = setInterval(function () {
             var currTime = Date.now() - startTime;
             var timeRemainingInSeconds = timerTime - Math.floor(currTime / 1000);
             if (timeRemainingInSeconds > 0) {
@@ -33,12 +33,12 @@ function TimerStart() {
                 }
             } else {
                 //notify and wait for the user to stop the alarm
-                clearInterval(TimerInterval);
+                clearInterval(IntInterval);
                 timeInput.value = formatSecondstoISO(timerTime - Math.floor(currTime / 1000));
                 buttonName.value = 'Ok';
                 var audio = new Audio('quite-impressed.ogg');
                 notifyMe();
-                TimerInterval = setInterval(function () {
+                IntInterval = setInterval(function () {
                     if (buttonName.value === 'Ok') {
                         audio.play();
                     } else {
@@ -50,32 +50,32 @@ function TimerStart() {
         }, 1000);
     } else { //button == Stop
         buttonName.value = 'Start';
-        clearInterval(TimerInterval);
+        clearInterval(IntInterval);
     }
 
 }
 
-function TimerReset() {
-    document.getElementById('TimerTime').readonly = false;
-    document.getElementById('TimerTime').value = timerUserTime;
-    clearInterval(TimerInterval);
-    document.getElementById('TimerStartButton').value = 'Start';
-    document.getElementById('TimerTime').style.borderColor = '';
+function IntReset() {
+    document.getElementById('IntTime').readonly = false;
+    document.getElementById('IntTime').value = IntUserTime;
+    clearInterval(Int);
+    document.getElementById('IntStartButton').value = 'Start';
+    document.getElementById('IntTime').style.borderColor = '';
 
 }
 
-function TimerUserTimeStore() {
-    var t = document.getElementById('TimerTime').value;
+function IntUserTimeStore() {
+    var t = document.getElementById('IntTime').value;
     if (t.length === 0) {
         t = '03';
     }
-    timerUserTime = t;
+    IntUserTime = t;
 }
 
-function TimerChangeTimeElement() {
-    if (document.getElementById('TimerStartButton').value === 'Stop') { //if the timer is running
-        TimerStart();
+function IntChangeTimeElement() {
+    if (document.getElementById('IntStartButton').value === 'Stop') { //if the timer is running
+        IntStart();
     }
-    document.getElementById('TimerTime').style.borderColor = '';
+    document.getElementById('IntTime').style.borderColor = '';
 
 }

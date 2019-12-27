@@ -10,18 +10,46 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="timer.js"></script>
+        <script src="formatTime.js"></script>
+        <script src="quotes.js"></script>    
+        <script src="window.js"></script>
+        <script src="mode.js"></script>
+        <script src="PCController.js"></script>
+        <script src="Int.js"></script>
+
+
     </head>
     <body>
-        <div><h1>Timer</h1>
-            <p id='timer'>
-            </p>
-            <p> <input style='text-align:right' type='text' id='time' onchange="userTimeStore()" onFocus='changeTimeElement()' onkeyup='formatInput()' maxlength="6"
-                       />
-            <p><input type='button' id='startButton' onclick='timerStart()' value='Start' 
-                      />
-                <input type='button' id='resetButton' onclick='resetTimer()' value='Reset' 
-                       />
-            </p>
+        <div><h1>Timer</h1><input type='button' id='Mode' onclick='changeMode()' value='Timer Mode' 
+                                  />
+
+            <div id="Timer"><p> <input style='text-align:right' type='text' id='TimerTime' onchange="TimerUserTimeStore()" onFocus='TimerChangeTimeElement()' onkeyup='formatInput(this.id)' maxlength="6"
+                                       />
+                </p>
+                <p><input type='button' id='TimerStartButton' onclick='TimerStart()' value='Start' 
+                          />
+                    <input type='button' id='TimerResetButton' onclick='TimerReset()' value='Reset' 
+                           />
+                </p>
+            </div>
+            <div id="PCController"><p> <input style='text-align:right' type='text' id='PCControllerTime' onchange="PCControllerUserTimeStore()" onFocus='PCControllerChangeTimeElement()' onkeyup='formatInput(this.id)' maxlength="6"
+                                              />
+                </p>
+                <p><input type='button' id='PCControllerStartButton' onclick='PCControllerStart()' value='Start' 
+                          />
+                    <input type='button' id='PCControllerResetButton' onclick='PCControllerReset()' value='Reset' 
+                           />
+                </p>
+            </div>
+            <div id="Int"><p> <input style='text-align:right' type='text' id='IntTime' onchange="IntUserTimeStore()" onFocus='IntChangeTimeElement()' onkeyup='formatInput(this.id)' maxlength="6"
+                                     />
+                </p>
+                <p><input type='button' id='IntStartButton' onclick='IntStart()' value='Start' 
+                          />
+                    <input type='button' id='IntResetButton' onclick='IntReset()' value='Reset' 
+                           />
+                </p>
+            </div>
         </div>
         <div> 
 
@@ -33,7 +61,7 @@ and open the template in the editor.
                 </div>
                 <div id='quoteButtons' style='display:none'>
                     <p><input type='button' id='resetQuote' onclick='resetQuote()' value='Change Quote' 
-                                                                      />
+                              />
                         <input type='button' id='resetFileQuote' onclick='resetFileQuote()' value='Reset File'  
                                />
                         <input type='button' id='showFile' onclick='showWholeFile()' value='Show Whole File'  
