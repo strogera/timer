@@ -6,11 +6,11 @@ function changeMode() {
         document.getElementById('PCController').style.display = '';
 
     } else if (mode.value === 'PCController Mode') {
-        mode.value = 'Int Mode';
+        mode.value = 'Interval Mode';
         document.getElementById('PCController').style.display = 'none';
         document.getElementById('Int').style.display = '';
 
-    } else if (mode.value === 'Int Mode') {
+    } else if (mode.value === 'Interval Mode') {
         mode.value = 'Timer Mode';
         document.getElementById('Int').style.display = 'none';
         document.getElementById('Timer').style.display = '';

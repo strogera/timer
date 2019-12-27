@@ -24,7 +24,11 @@ function TimerStart() {
             var currTime = Date.now() - startTime;
             var timeRemainingInSeconds = timerTime - Math.floor(currTime / 1000);
             if (timeRemainingInSeconds > 0) {
-                timeInput.value = formatSecondstoISO(timerTime - Math.floor(currTime / 1000));
+                if ((timerTime - Math.floor(currTime / 1000)) >= 0) {
+                    timeInput.value = formatSecondstoISO(timerTime - Math.floor(currTime / 1000));
+                } else {
+                    timeInput.value = formatSecondstoISO(0);
+                }
                 if (reminderTime >= 10) { //send a single notification sound as a reminder at 5% that the timer ends shortly
                     if (timeRemainingInSeconds === reminderTime) {
                         var audio = new Audio('quite-impressed.ogg');
@@ -34,9 +38,14 @@ function TimerStart() {
             } else {
                 //notify and wait for the user to stop the alarm
                 clearInterval(TimerInterval);
-                timeInput.value = formatSecondstoISO(timerTime - Math.floor(currTime / 1000));
+                if ((timerTime - Math.floor(currTime / 1000)) >= 0) {
+                    timeInput.value = formatSecondstoISO(timerTime - Math.floor(currTime / 1000));
+                } else {
+                    timeInput.value = formatSecondstoISO(0);
+                }
                 buttonName.value = 'Ok';
                 var audio = new Audio('quite-impressed.ogg');
+                audio.volume=1;
                 notifyMe();
                 TimerInterval = setInterval(function () {
                     if (buttonName.value === 'Ok') {

@@ -46,7 +46,9 @@ function formatTimeStringToSeconds(str) {
     } else if (RegExp("^([0-9]|[0-1][0-9]|2[0-3]):(0[1-9]|[0-5][0-9]):(0[1-9]|[0-5][0-9])$").test(str)) {
         splitString = str.split(":");
         seconds = parseInt(splitString[0], 10) * 60 * 60 + parseInt(splitString[1], 10) * 60 + parseInt(splitString[2], 10);
-    } else {
+    }else if(str==='00'){
+        seconds=0;
+    }else {
         return -1;
     }
     return seconds;

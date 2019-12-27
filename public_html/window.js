@@ -5,7 +5,9 @@ window.onload = function () {
     TimerUserTimeStore(); //in case the time is set before the page loads, ex refresh
     document.getElementById('PCController').style.display = 'none';
     document.getElementById('Int').style.display = 'none';
-
+   // timerUserTime = document.getElementById('TimerTIme').value;
+  //  pccontrollerUserTime = document.getElementById('PCControllerTime').value;
+  //  IntUserTime = document.getElementById('IntTime').value;
     fileInput.addEventListener('change', function (e) {
         var file = fileInput.files[0];
         if (file !== null) {
