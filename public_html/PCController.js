@@ -56,7 +56,6 @@ function PCControllerStart() {
 		PCControllerInterval = setInterval(function () {
 			var currTime = Date.now() - startTime;
 			var timeCount = Math.floor(currTime / 1000);
-			console.log(timeCount);
 			if (timeCount > 0) {
 				document.getElementById('PCControllerTime').value = formatSecondstoISO(timeCount);
 			}
